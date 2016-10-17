@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   res.sendFile('../public/index.html');
 });
 
-mongoose.connect('mongodb://Mike:test123@ds045521.mlab.com:45521/comment-box')
+mongoose.connect('mongodb://uname:pword@ds045521.mlab.com:45521/comment-box')
 db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 
