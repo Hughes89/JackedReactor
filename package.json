@@ -1,0 +1,26 @@
+{
+  "name": "lift-tracker",
+  "version": "1.0.0",
+  "description": "track lifting progress easily",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hughes89/LiftTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hughes89/LiftTracker/issues"
+  },
+  "homepage": "https://github.com/Hughes89/LiftTracker#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.4"
+  }
+}
