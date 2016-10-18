@@ -116,6 +116,11 @@ p {
   text-decoration: none;
 }
 
+a {
+  color:rgb(255,110,64);
+  text-decoration: none;
+}
+
 .mdl-mini-footer {
   background-color: rgb(250,250,250);
   color: #FFFFFF;
