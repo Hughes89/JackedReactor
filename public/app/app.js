@@ -1,4 +1,13 @@
-angular.module('track', ['track.nav', 'track.add', 'track.lift', 'track.services', 'ngMaterial', 'ui.router'])
+angular.module('track', [
+  'track.nav',
+  'track.add',
+  'track.lift',
+  'track.signin',
+  'track.signup',
+  'track.services',
+  'ngMaterial',
+  'ui.router'
+])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/user');
@@ -17,6 +26,16 @@ angular.module('track', ['track.nav', 'track.add', 'track.lift', 'track.services
     url: '/:lift',
     templateUrl: 'app/lift/lift.html',
     controller: 'liftController'
+  })
+  .state('signin', {
+    url: '/signin',
+    templateUrl: 'app/signin/signin.html',
+    controller: 'signinController'
+  })
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'app/signup/signup.html',
+    controller: 'signupController'
   })
 })
 
