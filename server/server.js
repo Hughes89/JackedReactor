@@ -31,8 +31,22 @@ app.get('/', function (req, res) {
 
 app.get('/user/:id', function (req, res, next) {
   var user = req.params.id;
-  console.log(user);
   Lift.find({ user : user }, function (err, liftObj) {
+    if (err) {
+      console.log(err);
+    } else if (liftObj) {
+      console.log('Found: ' + liftObj);
+      res.json(liftObj);
+    }
+  });
+});
+
+
+app.get('/:user/:id', function (req, res, next) {
+  var user = req.params.user;
+  var lift = req.params.id;
+  console.log(user);
+  Lift.find({ user : user, lift: lift }, function (err, liftObj) {
     if (err) {
       console.log(err);
     } else if (liftObj) {
