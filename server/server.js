@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
  ************************/
 
 var db;
-mongoose.connect('mongodb://Mike:test123@ds045521.mlab.com:45521/comment-box');
+mongoose.connect('mongodb://@ds045521.mlab.com:45521/comment-box');
 var Lift = mongoose.model('Lift', {lift: String, date: String, weight: Number, user: String});
 
 /**************************
