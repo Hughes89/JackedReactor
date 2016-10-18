@@ -2,7 +2,9 @@ angular.module('track.services', [])
 
 .factory('userData', function ($http, $location) {
   var storage = {};
+  storage.liftList = [];
 
+  //Get user data:
   var getData = function (callback) {
     window.user = prompt('Username: ');
     return $http({
@@ -15,6 +17,7 @@ angular.module('track.services', [])
     });
   };
 
+  //Get lift data:
   var getLiftData = function (liftName, callback) {
     return $http({
       method: 'GET',

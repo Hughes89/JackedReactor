@@ -1,6 +1,6 @@
 angular.module('track.add', [])
 
-.controller('addController', function ($scope, $stateParams, $http, userData) {
+.controller('addController', function ($scope, $stateParams, $http, $location, userData) {
   $scope.lift = '';
   $scope.weight = '';
   $scope.reps = '';
@@ -8,14 +8,14 @@ angular.module('track.add', [])
   $scope.sendLift = function () {
     $scope.total = Math.round($scope.weight * (1 + ($scope.reps/30)));
     var storage = [window.user, $scope.lift, $scope.total];
-    $scope.lift = '';
-    $scope.weight = '';
-    $scope.reps = '';
     $http({
       method: 'POST',
       url: '/submitLift',
       data: storage
     });
-  };
+    userData.storage.liftList.push($scope.lift);
+    $location.path('/user/' + $scope.lift);
+    };
+  
 
 });

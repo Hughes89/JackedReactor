@@ -38,7 +38,7 @@
             Lifts
           </md-button>
           <md-menu-content width="4" >
-            <md-menu-item ng-repeat="lift in data.liftList">
+            <md-menu-item ng-repeat="lift in data.liftList" ng-if="gotLifts">
               <md-button ng-click="ctrl.announceClick($index)">
                   <div layout="row" flex>
                     <p flex><a href="#/user/{{lift}}">{{lift}}</a></p>
@@ -59,4 +59,12 @@
           </div>
         </div>
       </main>
+
+          <footer>
+      <md-toolbar class="md-scroll-shrink">
+        <div layout="row" layout-align="center center" flex>
+          <a href="">Logout</a>
+        </div>
+      </md-toolbar>
+    </footer>
     </div>
