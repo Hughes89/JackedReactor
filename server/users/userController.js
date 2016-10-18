@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
   signin: function (req, res, next) {
+    console.log(req.body);
     var username = req.body.username;
     var password = req.body.password;
     User.findOne({ username: username })
@@ -14,16 +15,12 @@ module.exports = {
           return user.comparePasswords(password)
             .then(function (foundUser) {
               if (foundUser) {
-                var token = jwt.encoded(user, 'secret');
-                res.json({token: token});
+                res.sendStatus(200);
               } else {
                 return next(new Error('No user'));
               }
             });
         }
-      })
-      .fail(function (err) {
-        next(err);
       });
   },
 

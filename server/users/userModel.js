@@ -18,8 +18,8 @@ var UserSchema = new mongoose.Schema({
 
 UserSchema.methods.comparePasswords = function (submittedPassword) {
   var savedPassword = this.password;
-  return Q.Promise(function (resolve, rejext) {
-    bcrypt.compare(submittedPassword, savedPassword, function (err, isMath) {
+  return Q.Promise(function (resolve, reject) {
+    bcrypt.compare(submittedPassword, savedPassword, function (err, isMatch) {
       if (err) {
         reject(err);
       } else {
