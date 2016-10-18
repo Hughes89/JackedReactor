@@ -19,7 +19,7 @@ angular.module('track.nav', [])
         userData.storage.liftList.push(ele.lift);
       }
     });
-    $scope.data.liftList = userData.storage.liftList || '';
+    $scope.data.liftList = userData.storage.liftList;
     $scope.gotLifts = true;
   };
   $scope.getLifts = userData.getData;
