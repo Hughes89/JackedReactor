@@ -38,10 +38,11 @@ module.exports = {
           User.create({
             username: username,
             password: password
+          })
+          .then(function (user) {
+            res.sendStatus(201);
           });
         }
       });
-  },
-
-  checkAuth: function (req, res, next) {},
+  }
 };
