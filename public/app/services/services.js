@@ -11,10 +11,11 @@ angular.module('track.services', [])
     })
     .then(function (data) {
       storage.data = data.data;
-      console.log(storage.data);
+      //console.log(storage.data);
+      $location.path('/user/add');
     });
   };
-
+  getData();
 
   return {
     getData: getData,
