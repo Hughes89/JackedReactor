@@ -29,7 +29,7 @@
           <span class="mdl-layout-title">Lift Tracker</span>
           <div class="mdl-layout-spacer"></div>
                    <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Add Lift</a>
+          <a class="mdl-navigation__link" href="#/user/add">Add Lift</a>
           </nav>
 
 
@@ -38,11 +38,10 @@
             Lifts
           </md-button>
           <md-menu-content width="4" >
-            <md-menu-item ng-repeat="item in [1, 2, 3]">
+            <md-menu-item ng-repeat="lift in data.liftList">
               <md-button ng-click="ctrl.announceClick($index)">
                   <div layout="row" flex>
-                    <p flex>Option {{item}}</p>
-                    <md-icon md-menu-align-target md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
+                    <p flex><a href="#/user/{{lift}}">{{lift}}</a></p>
                   </div>
               </md-button>
             </md-menu-item>
