@@ -1,48 +1,63 @@
-<div id="wrapper">
-  <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Lift Tracker</a>
-      </div>
-      <!-- Top Menu Items -->
-      <ul class="nav navbar-right top-nav">
-          <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user}} <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                  <li>
-                      <a href="#" onclick="window.location.reload(true)"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                  </li>
-              </ul>
-          </li>
-      </ul>
-      <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav side-nav">
-              <li class="active">
-                  <a href="index.html"> Add Lift</a>
-              </li>
-              <li>
-                  <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Lifts <i class="fa fa-fw fa-caret-down"></i></a>
-                  <ul id="demo" class="collapse">
-                      <li>
-                          <a href="#">Dropdown Item</a>
-                      </li>
-                      <li>
-                          <a href="#">Dropdown Item</a>
-                      </li>
-                  </ul>
-              </li>
-          </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-  </nav>
-  <div ui-view></div>
-</div>
-    <!-- /#wrapper -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Material Design Lite</title>
+
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Lift Tracker</span>
+          <div class="mdl-layout-spacer"></div>
+                   <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Add Lift</a>
+          </nav>
+
+
+<md-menu md-position-mode="target-right target" >
+          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            Lifts
+          </md-button>
+          <md-menu-content width="4" >
+            <md-menu-item ng-repeat="item in [1, 2, 3]">
+              <md-button ng-click="ctrl.announceClick($index)">
+                  <div layout="row" flex>
+                    <p flex>Option {{item}}</p>
+                    <md-icon md-menu-align-target md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+
+        </div>
+      </header>
+      <div class="demo-ribbon"></div>
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <div ui-view></div>
+          </div>
+        </div>
+      </main>
+    </div>
