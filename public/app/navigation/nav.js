@@ -1,9 +1,18 @@
 angular.module('track.nav', [])
 
-.controller('navController', function ($scope, $stateParams, $http, userData) {
+.controller('navController', function ($scope, $stateParams, $location, $http, userData) {
   $scope.data = {};
   $scope.user = window.user;
   $scope.gotLifts = false;
+
+  $scope.goto = function (path) {
+    $location.path('/user/' + path);
+  };
+
+  $scope.reload = function () {
+    location.reload();
+  };
+
   $scope.makeUnique = function (array) {
     array.forEach(function (ele) {
       if (userData.storage.liftList.indexOf(ele.lift) === -1) {
