@@ -13,7 +13,6 @@ angular.module('track.services', [])
     }
   };
 
-  //Get user data:
   var getData = function (callback) {
     window.user = prompt('Username: ');
     return $http({
@@ -26,7 +25,6 @@ angular.module('track.services', [])
     });
   };
 
-  //Get lift data:
   var getLiftData = function (liftName, callback) {
     return $http({
       method: 'GET',
@@ -43,4 +41,32 @@ angular.module('track.services', [])
     filterLifts: filterLifts,
     storage: storage
   };
+})
+
+.factory('Auth', function ($http, $location, $window) {
+  var signup = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/signup',
+      data: user
+    }).success(function (data) {
+      $location.path('/user/add');
+    });
+  };
+
+  var signin = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/signin',
+      data: user
+    }).success(function (data) {
+      $location.path('/user/add');
+    });
+  };
+
+  return {
+    signup: signup,
+    signin: signin
+  };
+
 });
