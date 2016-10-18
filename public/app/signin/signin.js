@@ -14,11 +14,7 @@ angular.module('track.signin', [])
 
   $scope.signin = function () {
     Auth.signin($scope.user)
-      .then(function () {
-        $location.path('/user/add');
-      })
       .catch(function (error) {
-        console.log(error);
         $scope.checkError(error);
       });
   };
