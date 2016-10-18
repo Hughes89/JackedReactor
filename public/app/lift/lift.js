@@ -1,15 +1,18 @@
 angular.module('track.lift', [])
 
 .controller('liftController', function ($scope, $stateParams, $http, userData) {
-  $scope.xkey = 'range'; 
-  $scope.ykeys = ['total_tasks',     'total_overdue'];
-  $scope.labels = ['Total Tasks', 'Out of Budget Tasks'];
-  $scope.myModel = [
-    { range: 'January', total_tasks: 20, total_overdue: 5 },
-    { range: 'January', total_tasks: 35, total_overdue: 8 },
-    { range: 'January', total_tasks: 20, total_overdue: 1 },
-    { range: 'January', total_tasks: 20, total_overdue: 6 }
-  ];
+  $scope.lift = $stateParams.lift;
+  $scope.data = {};
+  $scope.data.lift = false;
+  $scope.getLiftData = userData.getLiftData;
+  $scope.getLiftData($scope.lift, function (data) {
+    $scope.xkey = 'date'; 
+    $scope.ykeys = ['weight'];
+    $scope.labels = ['Weight Lifted'];
+    $scope.myModel = data;
+    $scope.data.lift = true;
+  });
+
 })
 
 .directive('linechart', function() {
@@ -18,6 +21,7 @@ angular.module('track.lift', [])
     template: '<div></div>',
     replace: true,
     link: function($scope, element, attrs) {
+      console.log($scope[attrs.data])
       var data = $scope[attrs.data],
       xkey = $scope[attrs.xkey],
       ykeys= $scope[attrs.ykeys],

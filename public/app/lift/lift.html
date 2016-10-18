@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header">
-                    LiftName  <small>Create or add to existing...</small>
+                    {{lift}}  <small>Create or add to existing...</small>
                 </h3>
                 <hr>
             </div>
@@ -12,7 +12,7 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
-              <div id="test">
+              <div id="test" ng-if="data.lift">
                 <linechart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel"></linechart>
               </div>
             </div>
