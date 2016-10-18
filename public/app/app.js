@@ -1,4 +1,4 @@
-angular.module('track', ['track.nav','ui.router'])
+angular.module('track', ['track.nav','track.services','ui.router'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
