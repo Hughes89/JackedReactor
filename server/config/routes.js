@@ -1,4 +1,5 @@
 var liftController = require('../lifts/liftController.js');
+var userController = require('../users/userController.js');
 
 module.exports = function (app, express) {
 
@@ -14,4 +15,7 @@ app.post('/submitLift', liftController.submitLift);
 
 app.delete('/delete/:user/:lift', liftController.deleteLifts);
 
+app.post('/signup', userController.signup);
+
+app.post('/signin', userController.signin);
 };

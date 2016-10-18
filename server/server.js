@@ -9,32 +9,32 @@ app.use(express.static('../public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('');
+mongoose.connect('mongodb://Mike:test123@ds045521.mlab.com:45521/comment-box');
 
 require('./config/routes.js')(app, express);
 
 
-// /********************
-//  * Authentication Testing
-//  ********************/
+/********************
+ * Authentication Testing
+ ********************/
 
-// app.get('/test', function (req, res) {
-//   res.sendFile('/Users/mikehughes/Documents/MVPproject/WorkoutAngular/LiftTracker/public/app/signin/signin.html');
-// });
+app.get('/test', function (req, res) {
+  res.sendFile('/Users/mikehughes/Documents/MVPproject/WorkoutAngular/LiftTracker/public/app/signin/signin.html');
+});
 
 
-// app.post('/signin', function (req, res, next) {
-//   var username = req.body.username;
-//   var password = req.body.password;
-//   User.findOne({ username: username })
-//     .then(function (user) {
-//       if (!user) {
-//         next(new Error('User does not exist'));
-//       } else {
-//         console.log(user);
-//       }
-//     });
-// });
+app.post('/signin', function (req, res, next) {
+  var username = req.body.username;
+  var password = req.body.password;
+  User.findOne({ username: username })
+    .then(function (user) {
+      if (!user) {
+        next(new Error('User does not exist'));
+      } else {
+        console.log(user);
+      }
+    });
+});
 
 app.listen(8080);
 console.log('Listening on port: ' + port);
