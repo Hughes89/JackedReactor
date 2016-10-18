@@ -1,8 +1,19 @@
 angular.module('track.nav', [])
 
-.controller('navController', function ($scope, $stateParams, userData) {
+.controller('navController', function ($scope, $stateParams, $http, userData) {
   userData.getData();
   $scope.data = {};
   $scope.hello = 'Hello';
-  //console.log($scope.data.person)
+  
+  
+  $scope.lift = '';
+  $scope.weight = '';
+  $scope.sendLift = function () {
+    var storage = [window.user, $scope.lift, $scope.weight];
+    return $http({
+      method: 'POST',
+      url: '/submitLift',
+      data: storage
+    });
+  };
 });

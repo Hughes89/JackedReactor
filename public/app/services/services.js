@@ -2,11 +2,12 @@ angular.module('track.services', [])
 
 .factory('userData', function ($http, $location) {
   var storage = {};
-  
+
   var getData = function () {
+    window.user = prompt('Username: ');
     return $http({
       method: 'GET',
-      url: '/lifts',
+      url: '/user/' + storage.user,
     })
     .then(function (data) {
       console.log(data);
@@ -14,8 +15,9 @@ angular.module('track.services', [])
     });
   };
 
+
   return {
     getData: getData,
     storage: storage
-  }
+  };
 });
