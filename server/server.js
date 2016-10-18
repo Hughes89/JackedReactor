@@ -31,11 +31,12 @@ app.get('/', function (req, res) {
 
 app.get('/user/:id', function (req, res, next) {
   var user = req.params.id;
+  console.log(user);
   Lift.find({ user : user }, function (err, liftObj) {
     if (err) {
       console.log(err);
     } else if (liftObj) {
-      //console.log('Found: ' + liftObj);
+      console.log('Found: ' + liftObj);
       res.json(liftObj);
     }
   });
@@ -53,15 +54,6 @@ app.post('/submitLift', function (req, res, next) {
   });
 });
 
-
-// var test = new Lift({ lift: 'Bench', date: 'tom', weight: 180, user: 'mike' });
-// test.save(function (err, liftObj) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log('Save successful: ', liftObj);
-//   }
-// });
 
 
 app.listen(8080);

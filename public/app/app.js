@@ -1,10 +1,10 @@
 angular.module('track', ['track.nav','track.services','ui.router'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/');
   $stateProvider
   .state('home', {
-    url: '/home',
+    url: '/',
     templateUrl: 'app/navigation/nav.html',
     controller: 'navController' 
   });

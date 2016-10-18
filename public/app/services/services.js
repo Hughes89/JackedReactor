@@ -7,11 +7,11 @@ angular.module('track.services', [])
     window.user = prompt('Username: ');
     return $http({
       method: 'GET',
-      url: '/user/' + storage.user,
+      url: '/user/' + window.user,
     })
     .then(function (data) {
-      console.log(data);
-      storage.data = data;
+      storage.data = data.data;
+      console.log(storage.data);
     });
   };
 
