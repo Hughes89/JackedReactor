@@ -4,6 +4,15 @@ angular.module('track.services', [])
   var storage = {};
   storage.liftList = [];
 
+  var filterLifts = function (param) {
+    for (var i = 0; i < storage.liftList.length; i++) {
+      var lift = storage.liftList[i];
+      if (lift === param) {
+        storage.liftList.splice(i, i);
+      }
+    }
+  };
+
   //Get user data:
   var getData = function (callback) {
     window.user = prompt('Username: ');
@@ -31,6 +40,7 @@ angular.module('track.services', [])
   return {
     getData: getData,
     getLiftData: getLiftData,
+    filterLifts: filterLifts,
     storage: storage
   };
 });

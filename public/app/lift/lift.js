@@ -1,6 +1,6 @@
 angular.module('track.lift', [])
 
-.controller('liftController', function ($scope, $stateParams, $http, userData) {
+.controller('liftController', function ($scope, $stateParams, $location, $http, userData) {
   $scope.lift = $stateParams.lift;
   $scope.data = {};
   $scope.data.lift = false;
@@ -13,6 +13,19 @@ angular.module('track.lift', [])
     $scope.data.lift = true;
   });
 
+  $scope.deleteLiftCollection = function () {
+    var choice = confirm('Are you sure?');
+    if (choice) {
+      $http({
+        method: 'DELETE',
+        url: '/delete/' + window.user + '/' + $scope.lift,
+      }).success(function () {
+        userData.filterLifts($scope.lift);
+        $location.path('/user/add');
+      });
+    }
+  };
+
 })
 
 .directive('linechart', function() {
@@ -21,7 +34,6 @@ angular.module('track.lift', [])
     template: '<div></div>',
     replace: true,
     link: function($scope, element, attrs) {
-      console.log($scope[attrs.data])
       var data = $scope[attrs.data],
       xkey = $scope[attrs.xkey],
       ykeys= $scope[attrs.ykeys],
@@ -32,7 +44,8 @@ angular.module('track.lift', [])
         xkey: xkey,
         ykeys: ykeys,
         labels: labels,
-        parseTime: false
+        parseTime: false,
+        resize: true
       });
     }
   };
