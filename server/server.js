@@ -9,7 +9,7 @@ app.use(express.static('../public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://Mike:test123@ds045521.mlab.com:45521/comment-box');
+mongoose.connect('');
 
 require('./config/routes.js')(app, express);
 
