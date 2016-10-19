@@ -3,9 +3,9 @@ var userController = require('../users/userController.js');
 
 module.exports = function (app, express) {
 
-app.get('/', function (req, res) {
-  res.sendFile('../public/index.html');
-});
+// app.get('/', function (req, res) {
+//   res.sendFile('../public/index.html');
+// });
 
 app.get('/user/:id', liftController.getAllLifts);
 
