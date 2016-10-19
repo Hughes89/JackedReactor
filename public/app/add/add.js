@@ -4,7 +4,11 @@ angular.module('track.add', [])
   $scope.lift = '';
   $scope.weight = '';
   $scope.reps = '';
+  $scope.error = '';
   $scope.sendLift = function () {
+    if ($scope.lift.length <= 1) {
+      $scope.error = 'Please insert an exercise.';
+    } else {
     $scope.total = Math.round($scope.weight * (1 + ($scope.reps/30)));
     var storage = [window.user, $scope.lift, $scope.total];
     $http({
@@ -16,6 +20,7 @@ angular.module('track.add', [])
       userData.storage.liftList.push($scope.lift);
     }
     $location.path('/user/' + $scope.lift);
+    }
   };
   
 

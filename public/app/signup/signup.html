@@ -31,9 +31,10 @@
             <input type="text" class="mdl-textfield__input" ng-model="user.username" placeholder="Username" />
             <input type="password" class="mdl-textfield__input" ng-model="user.password" placeholder="Password..." />
             <center><button class="mdl-button mdl-js-button mdl-button--primary">
-                Signup
+                Sign up
             </button><br>
             <span ng-show="err"><strong>Password must be 8 characters long.</strong></span><br>
+            <span ng-show="error"><strong>Username exists</strong></br></span>
           </form>
           Already have an account? <a href='#/signin'><strong>Signin</strong>...</a>
           <center>

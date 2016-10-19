@@ -10,22 +10,25 @@ angular.module('track', [
 ])
 
 .config(function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/user');
+  $urlRouterProvider.otherwise('/signin');
   $stateProvider
   .state('home', {
     url: '/user',
     templateUrl: 'app/navigation/nav.html',
-    controller: 'navController' 
+    controller: 'navController',
+    authenticate: true 
   })
   .state('home.add', {
     url: '/add',
     templateUrl: 'app/add/add.html',
-    controller: 'addController'
+    controller: 'addController',
+    authenticate: true 
   })
   .state('home.lift', {
     url: '/:lift',
     templateUrl: 'app/lift/lift.html',
-    controller: 'liftController'
+    controller: 'liftController',
+    authenticate: true 
   })
   .state('signin', {
     url: '/signin',
@@ -36,7 +39,7 @@ angular.module('track', [
     url: '/signup',
     templateUrl: 'app/signup/signup.html',
     controller: 'signupController'
-  })
+  });
 })
 
 

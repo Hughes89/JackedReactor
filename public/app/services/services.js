@@ -9,17 +9,20 @@ angular.module('track.services', [])
       var lift = storage.liftList[i];
       if (lift === param) {
         storage.liftList.splice(i, i);
+        console.log(storage.liftList)
       }
     }
   };
 
   var getData = function (callback) {
-    window.user = prompt('Username: ');
+    // window.user = prompt('Username: ');
+    console.log(window.user);
     return $http({
       method: 'GET',
       url: '/user/' + window.user,
     })
     .then(function (data) {
+      console.log(data);
       callback(data.data);
       $location.path('/user/add');
     });
@@ -44,12 +47,15 @@ angular.module('track.services', [])
 })
 
 .factory('Auth', function ($http, $location, $window) {
+  var isAuth = false;
+
   var signup = function (user) {
     return $http({
       method: 'POST',
       url: '/signup',
       data: user
     }).success(function (data) {
+      window.user = data;
       $location.path('/user/add');
     });
   };
@@ -60,6 +66,7 @@ angular.module('track.services', [])
       url: '/signin',
       data: user
     }).success(function (data) {
+      window.user = data;
       $location.path('/user/add');
     });
   };

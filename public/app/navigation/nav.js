@@ -9,9 +9,6 @@ angular.module('track.nav', [])
     $location.path('/user/' + path);
   };
 
-  $scope.reload = function () {
-    location.reload();
-  };
 
   $scope.makeUnique = function (array) {
     array.forEach(function (ele) {
