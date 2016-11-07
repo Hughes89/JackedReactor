@@ -8,21 +8,18 @@ angular.module('track.services', [])
     for (var i = 0; i < storage.liftList.length; i++) {
       var lift = storage.liftList[i];
       if (lift === param) {
-        storage.liftList.splice(i, i);
-        console.log(storage.liftList)
+        storage.liftList.splice(i, i + 1);
       }
     }
   };
 
   var getData = function (callback) {
     // window.user = prompt('Username: ');
-    console.log(window.user);
     return $http({
       method: 'GET',
       url: '/user/' + window.user,
     })
     .then(function (data) {
-      console.log(data);
       callback(data.data);
       $location.path('/user/add');
     });

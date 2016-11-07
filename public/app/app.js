@@ -16,19 +16,16 @@ angular.module('track', [
     url: '/user',
     templateUrl: 'app/navigation/nav.html',
     controller: 'navController',
-    authenticate: true 
   })
   .state('home.add', {
     url: '/add',
     templateUrl: 'app/add/add.html',
     controller: 'addController',
-    authenticate: true 
   })
   .state('home.lift', {
     url: '/:lift',
     templateUrl: 'app/lift/lift.html',
     controller: 'liftController',
-    authenticate: true 
   })
   .state('signin', {
     url: '/signin',
