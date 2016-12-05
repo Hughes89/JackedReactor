@@ -1,6 +1,6 @@
 var User = require('../users/userModel.js');
-var Q = require('q');
-var bcrypt = require('bcrypt-nodejs');
+var jwt = require('jwt-simple');
+var config = require('../config.js');
 
 module.exports = {
   signin: function (req, res, next) {
@@ -9,13 +9,17 @@ module.exports = {
     User.findOne({ username: username })
       .then(function (user) {
         if (!user) {
+          //send 404
           next(new Error('User does not exist'));
         } else {
           return user.comparePasswords(password)
             .then(function (foundUser) {
               if (foundUser) {
-                res.send(username);
+                user.password = '';
+                var token = jwt.encode(user, config.secret);
+                res.json({token: token});
               } else {
+                //send 401
                 return next(new Error('No user'));
               }
             });
@@ -36,6 +40,7 @@ module.exports = {
             password: password
           })
           .then(function (user) {
+              //create/send token
               res.sendStatus(201);
           });
         }
