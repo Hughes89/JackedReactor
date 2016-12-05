@@ -5,6 +5,7 @@ var moment = require('moment');
 module.exports = {
   getAllLifts: function (req, res, next) {
     var user = req.params.id;
+    console.log(req)
     Lift.find({ user : user }, function (err, liftObj) {
       if (err) {
         console.log(err);
@@ -29,6 +30,9 @@ module.exports = {
   },
 
   submitLift: function (req, res, next) {
+    console.log(req.user._id);
+    //Above it he current users id after encryption use to find person
+    //who is adding another lift!!
     var data = req.body;
     var date = moment().format('MM/DD/YYYY');
     var lift = new Lift({ lift: data[1], date: date, weight: data[2], user: data[0] });

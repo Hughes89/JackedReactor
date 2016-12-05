@@ -13,7 +13,8 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  salt: String
+  salt: String,
+  token: String
 });
 
 UserSchema.methods.comparePasswords = function (submittedPassword) {

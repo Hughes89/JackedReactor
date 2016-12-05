@@ -9,7 +9,7 @@ angular.module('track', [
   'ui.router'
 ])
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/signin');
     $stateProvider
     .state('home', {
@@ -38,6 +38,25 @@ angular.module('track', [
       controller: 'signupController'
     });
      $locationProvider.html5Mode(true); //Remove the '#' from URL.
+     $httpProvider.interceptors.push('AttachTokens');
+  })
+
+  .factory('AttachTokens', function ($window) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
+  var attach = {
+    request: function (object) {
+      var jwt = $window.localStorage.getItem('token');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
   })
 
   .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
@@ -55,5 +74,6 @@ angular.module('track', [
           .targetEvent(originatorEv)
       );
       originatorEv = null;
-    };
+    }
+
   });

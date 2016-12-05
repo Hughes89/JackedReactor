@@ -17,7 +17,7 @@ angular.module('track.services', [])
     // window.user = prompt('Username: ');
     return $http({
       method: 'GET',
-      url: '/user/' + window.user,
+      url: '/user/1',
     })
     .then(function (data) {
       callback(data.data);
@@ -64,9 +64,15 @@ angular.module('track.services', [])
       data: user
     }).success(function (data) {
       window.user = data;
+      console.log(data);
+      localStorage.setItem('token', data.token);
       $location.path('/user/add');
     });
   };
+
+  var isAuth = function () {
+    return !!localStorage.getItem('user');
+  }
 
   return {
     signup: signup,

@@ -5,11 +5,12 @@ angular.module('track.signin', [])
   $scope.errorMsg = '';
 
   $scope.checkError = function (error){
-    if (error.data.includes('No user')) {
-      $scope.errorMsg = 'Incorrect Password.';
-    } else if (error.data.includes('User does not exist')) {
-      $scope.errorMsg = 'Username does not exist.';
-    }
+    console.log(error);
+    // if (error.data.includes('No user')) {
+    //   $scope.errorMsg = 'Incorrect Password.';
+    // } else if (error.data.includes('User does not exist')) {
+    //   $scope.errorMsg = 'Username does not exist.';
+    // }
   };
 
   $scope.signin = function () {
