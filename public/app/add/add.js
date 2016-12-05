@@ -13,7 +13,7 @@ angular.module('track.add', [])
     var storage = [window.user, $scope.lift, $scope.total];
     $http({
       method: 'POST',
-      url: '/submitLift',
+      url: '/api/submitLift',
       data: storage
     });
     if (userData.storage.liftList.indexOf($scope.lift) == -1) {

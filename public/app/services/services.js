@@ -17,11 +17,10 @@ angular.module('track.services', [])
     // window.user = prompt('Username: ');
     return $http({
       method: 'GET',
-      url: '/user/1',
+      url: '/api/user',
     })
-    .then(function (data) {
-      callback(data.data);
-      $location.path('/user/add');
+    .then(function (res) {
+      return res.data;
     });
   };
 
@@ -60,7 +59,7 @@ angular.module('track.services', [])
   var signin = function (user) {
     return $http({
       method: 'POST',
-      url: '/signin',
+      url: '/api/signin',
       data: user
     }).success(function (data) {
       window.user = data;

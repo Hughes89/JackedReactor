@@ -5,19 +5,19 @@ var path = require('path');
 
 module.exports = function (app, express) {
 
-app.get('*', (req, res, next) => {
-  res.sendFile(path.resolve('public/index.html'));
-});
+  app.get('/api/user', helpers.isAuth, liftController.getAllLifts);
 
-app.get('/user/:id', helpers.isAuth, liftController.getAllLifts);
+  app.get('/api/:user/:liftId', helpers.isAuth, liftController.getCertainLift);
 
-app.get('/:user/:liftId', helpers.isAuth, liftController.getCertainLift);
+  app.post('/api/submitLift', helpers.isAuth, liftController.submitLift);
 
-app.post('/submitLift', helpers.isAuth, liftController.submitLift);
+  app.delete('/api/delete/:user/:lift', helpers.isAuth, liftController.deleteLifts);
 
-app.delete('/delete/:user/:lift', helpers.isAuth, liftController.deleteLifts);
+  app.post('/api/signup', userController.signup);
 
-app.post('/signup', userController.signup);
+  app.post('/api/signin', userController.signin);
 
-app.post('/signin', userController.signin);
+  app.get('/*', (req, res, next) => {
+    res.sendFile(path.resolve('public/index.html'));
+  });
 };
