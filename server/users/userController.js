@@ -9,8 +9,7 @@ module.exports = {
     User.findOne({ username: username })
       .then(function (user) {
         if (!user) {
-          //send 404
-          next(new Error('User does not exist'));
+          res.sendStatus(404);
         } else {
           return user.comparePasswords(password)
             .then(function (foundUser) {
@@ -19,8 +18,7 @@ module.exports = {
                 var token = jwt.encode(user, config.secret);
                 res.json({token: token});
               } else {
-                //send 401
-                return next(new Error('No user'));
+                res.sendStats(401);
               }
             });
         }
@@ -33,15 +31,16 @@ module.exports = {
     User.findOne({ username: username })
       .then(function (user) {
         if (user) {
-          next(new Error('User already exists!'));
+          res.sendStatus(400);
         } else {
           User.create({
             username: username,
             password: password
           })
           .then(function (user) {
-              //create/send token
-              res.sendStatus(201);
+              user.password = '';
+              var token = jwt.encode(user, config.secret);
+              res.json({token: token});
           });
         }
       });
