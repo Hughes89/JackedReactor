@@ -1,15 +1,17 @@
 var liftController = require('../lifts/liftController.js');
 var userController = require('../users/userController.js');
+var config = require('../config.js');
+var path = require('path');
 
 module.exports = function (app, express) {
 
-// app.get('/', function (req, res) {
-//   res.sendFile('../public/index.html');
-// });
+app.get('*', (req, res, next) => {
+  res.sendFile(path.resolve('public/index.html'));
+});
 
 app.get('/user/:id', liftController.getAllLifts);
 
-app.get('/:user/:id', liftController.getCertainLift);
+app.get('/:user/:liftId', liftController.getCertainLift);
 
 app.post('/submitLift', liftController.submitLift);
 

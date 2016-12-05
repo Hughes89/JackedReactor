@@ -17,7 +17,7 @@ module.exports = {
 
   getCertainLift: function (req, res, next) {
     var user = req.params.user;
-    var lift = req.params.id;
+    var lift = req.params.liftId;
     Lift.find({ user : user, lift: lift }, function (err, liftObj) {
       if (err) {
         console.log(err);
