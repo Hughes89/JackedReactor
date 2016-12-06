@@ -7,11 +7,11 @@ module.exports = function (app, express) {
 
   app.get('/api/user', helpers.isAuth, liftController.getAllLifts);
 
-  app.get('/api/:user/:liftId', helpers.isAuth, liftController.getCertainLift);
+  app.get('/api/:liftId', helpers.isAuth, liftController.getCertainLift);
 
   app.post('/api/submitLift', helpers.isAuth, liftController.submitLift);
 
-  app.delete('/api/delete/:user/:lift', helpers.isAuth, liftController.deleteLifts);
+  app.delete('/api/delete/:lift', helpers.isAuth, liftController.deleteLifts);
 
   app.post('/api/signup', userController.signup);
 

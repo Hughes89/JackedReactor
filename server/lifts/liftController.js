@@ -4,22 +4,21 @@ var moment = require('moment');
 
 module.exports = {
   getAllLifts: function (req, res, next) {
-    var user = req.params.id;
-    console.log(req)
-    Lift.find({ user : user }, function (err, liftObj) {
+    var userId = req.user._id;
+    Lift.find({user: userId}, function (err, liftObj) {
       if (err) {
         console.log(err);
       } else if (liftObj) {
-        console.log('Found: ' + liftObj);
+        //console.log('Found: ' + liftObj);
         res.json(liftObj);
       }
     });
   },
 
   getCertainLift: function (req, res, next) {
-    var user = req.params.user;
+    var userId = req.user._id;
     var lift = req.params.liftId;
-    Lift.find({ user : user, lift: lift }, function (err, liftObj) {
+    Lift.find({ user : userId, lift: lift }, function (err, liftObj) {
       if (err) {
         console.log(err);
       } else if (liftObj) {
@@ -30,29 +29,35 @@ module.exports = {
   },
 
   submitLift: function (req, res, next) {
-    console.log(req.user._id);
-    //Above it he current users id after encryption use to find person
-    //who is adding another lift!!
+    var userId = req.user._id;
     var data = req.body;
     var date = moment().format('MM/DD/YYYY');
-    var lift = new Lift({ lift: data[1], date: date, weight: data[2], user: data[0] });
+    var OneRepMax = Math.round(data.weight * (1 + (data.reps/30)));
+    var lift = new Lift({ 
+      lift: data.lift,
+      date: date,
+      weight: data.weight,
+      reps: data.reps,
+      OneRepMax: OneRepMax,
+      user: userId });
     lift.save(function (err, liftObj) {
       if (err) {
         console.log(err);
       } else {
-        console.log('Save successful: ', liftObj);
+        console.log('Save successful');
+        res.sendStatus(201);
       }
     });
   },
 
   deleteLifts: function (req, res, next) {
     var lift = req.params.lift;
-    var user = req.params.user;
-    Lift.find({ user : user, lift: lift }).remove().exec(function (err, data) {
+    var userId = req.user._id;
+    Lift.find({ user : userId, lift: lift }).remove().exec(function (err, data) {
       if (err) {
-        console.log(egg);
+        console.log(err);
       }
-      res.sendStatus(201);
+      res.sendStatus(200);
     });
   }
 
