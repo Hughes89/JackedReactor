@@ -10,14 +10,15 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-            <form ng-submit='sendLift()'>
-            <input type="text" class="mdl-textfield__input" ng-model="lift" placeholder="Lift name..." required/>
-            <input type="number" class="mdl-textfield__input" ng-model="weight" placeholder="Weight..." required/>
-            <input type="number" class="mdl-textfield__input" ng-model="reps" placeholder="Reps..." required/>
-            <center><button class="mdl-button mdl-js-button mdl-button--primary">
+            <form ng-submit='add.sendLift()'>
+            <input type="text" class="mdl-textfield__input" ng-model="add.lift" placeholder="Lift name..." required/>
+            <input type="number" class="mdl-textfield__input" ng-model="add.weight" placeholder="Weight..." required/>
+            <input type="number" class="mdl-textfield__input" ng-model="add.reps" placeholder="Reps..." required/>
+            <div class="center-button">
+                <button class="mdl-button mdl-js-button mdl-button--primary center-button">
                 Add
-            </button><center><br>
-            <div class="err"><strong>{{ error }}</strong></div>
+                </button>
+            </div>
           </form>
         </div>
     </div>
