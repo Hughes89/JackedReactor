@@ -1,0 +1,11 @@
+<div class="dropdown" ng-controller="dropDownMenu">
+  <button ng-click="getLifts()" class="dropbtn">Lifts</button>
+  <div id="myDropdown" class="dropdown-content">
+    <div ng-if="data.liftList.length === 0">
+      <a href="/">Add Lift</a>
+    </div>
+    <div ng-repeat="lift in data.liftList">
+    <a href="" ng-click="goto(lift)">{{lift}}</a>
+    </div>
+  </div>
+</div>

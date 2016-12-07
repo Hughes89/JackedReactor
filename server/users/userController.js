@@ -15,6 +15,7 @@ module.exports = {
             .then(function (foundUser) {
               if (foundUser) {
                 user.password = '';
+                user.salt = '';
                 var token = jwt.encode(user, config.secret);
                 res.json({token: token});
               } else {
@@ -39,6 +40,7 @@ module.exports = {
           })
           .then(function (user) {
               user.password = '';
+              user.salt = '';
               var token = jwt.encode(user, config.secret);
               res.json({token: token});
           });

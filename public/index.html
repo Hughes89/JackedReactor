@@ -5,28 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Lift Tracker</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+    .ng-hide {
+      display: none!important;
+    }
+    </style>
+    
+    <!-- inject-vendor:css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.deep_orange-light_blue.min.css" />
-    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <!-- endinject -->
+
+    <!-- inject:css -->
     <link rel="stylesheet" href="styles.css">
+    <!-- endinject -->
+
   <body>
-    <div ui-view></div>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <nav-bar></nav-bar>
+    <div class="demo-ribbon"></div>
+    <main class="demo-main mdl-layout__content">
+      <div class="demo-container mdl-grid">
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+        <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+          <div ui-view><center><img class="loading" src="/assets/loading.gif"></div>
+        </div>
+      </div>
+    </main>
+    </div>
   </body>
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+  <!-- inject-vendor:js -->
   <script src="/node_modules/angular/angular.js"></script>
   <script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="/bower_components/angular-aria/angular-aria.js"></script>
-  <script src="/bower_components/angular-animate/angular-animate.js"></script>
-  <script src="/bower_components/angular-material/angular-material.js"></script> 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/raphael/raphael.min.js"></script>
+  <script src="/node_modules/morris.js/morris.min.js"></script>
+  <!-- endinject -->
+
+  <!-- inject:js -->
+  <!-- Bootstrapping -->
+  <script src="/app/app.js"></script>
+
+  <!-- Services -->
+  <script src="/app/services/services.js"></script>
+
+  <!-- Controllers -->
   <script src="/app/navigation/nav.js"></script>
+  <script src="/app/liftMenu/liftMenu.js"></script>
   <script src="/app/lift/lift.js"></script>
   <script src="/app/add/add.js"></script>
   <script src="/app/signin/signin.js"></script>
   <script src="/app/signup/signup.js"></script>
-  <script src="/app/services/services.js"></script>
-  <script src="/app/app.js"></script>
+  <!-- endinject -->
+
 </html>

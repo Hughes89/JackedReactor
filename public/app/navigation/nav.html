@@ -1,47 +1,15 @@
+<div ng-controller="navController">
+<header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+  <div class="mdl-layout__header-row" ng-if="isAuth()">
+    <span class="mdl-layout-title">Lift Tracker</span>
+    <div class="mdl-layout-spacer"></div>
+              <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="/">Add Lift</a>
+    <lift-dropdown></lift-dropdown>
+    <a class="mdl-navigation__link" href="" ng-click="logout()">Log Out</a>
+    </nav>
 
-    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
-        <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Lift Tracker</span>
-          <div class="mdl-layout-spacer"></div>
-                   <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="#/user/add">Add Lift</a>
-          </nav>
 
-
-<md-menu md-position-mode="target-right target" >
-          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-            Lifts
-          </md-button>
-          <md-menu-content width="4" >
-            <md-menu-item ng-repeat="lift in data.liftList" ng-if="gotLifts">
-              <md-button ng-click="goto(lift)">
-                  <div layout="row" flex>
-                    <p flex>{{lift}}</p>
-                  </div>
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
-
-        </div>
-      </header>
-      <div class="demo-ribbon"></div>
-      <main class="demo-main mdl-layout__content">
-        <div class="demo-container mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-            <div ui-view></div>
-          </div>
-        </div>
-      </main>
-          <footer class="mdl-mini-footer">
-            <form action="http://107.170.54.86:8080/">
-  <div class="mdl-mini-footer__right-section">
-    <button ng-click="reload()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-  Logout
-</button>
-<form>
   </div>
-</footer>
-    </div>
+</header>
+</div>

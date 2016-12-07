@@ -7,9 +7,10 @@ angular.module('track.lift', [])
   $scope.getLiftData = userData.getLiftData;
   $scope.getLiftData($scope.lift, function (data) {
     $scope.xkey = 'date'; 
-    $scope.ykeys = ['weight'];
-    $scope.labels = ['Weight Lifted'];
+    $scope.ykeys = ['OneRepMax'];
+    $scope.labels = ['One Rep Max'];
     $scope.myModel = data;
+    $scope.data.title = data;
     $scope.data.lift = true;
   });
 
@@ -18,14 +19,13 @@ angular.module('track.lift', [])
     if (choice) {
       $http({
         method: 'DELETE',
-        url: '/delete/' + window.user + '/' + $scope.lift,
+        url: '/api/delete/' + $scope.lift,
       }).success(function () {
-        userData.filterLifts($scope.lift);
-        $location.path('/user/add');
+        $location.path('/');
       });
     }
   };
-
+  
 })
 
 .directive('linechart', function() {

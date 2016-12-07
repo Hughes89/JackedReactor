@@ -1,26 +1,23 @@
 angular.module('track.add', [])
 
-.controller('addController', function ($scope, $stateParams, $http, $location, userData) {
+.controller('addController', function ($scope, $stateParams, $http, $location, userData, Auth) {
   $scope.lift = '';
   $scope.weight = '';
   $scope.reps = '';
-  $scope.error = '';
   $scope.sendLift = function () {
-    if ($scope.lift.length <= 1) {
-      $scope.error = 'Please insert an exercise.';
-    } else {
-    $scope.total = Math.round($scope.weight * (1 + ($scope.reps/30)));
-    var storage = [window.user, $scope.lift, $scope.total];
+    var storage = {
+      lift: $scope.lift.toLowerCase(),
+      weight: $scope.weight,
+      reps: $scope.reps
+    };
     $http({
       method: 'POST',
       url: '/api/submitLift',
       data: storage
     });
-    if (userData.storage.liftList.indexOf($scope.lift) == -1) {
-      userData.storage.liftList.push($scope.lift);
-    }
-    $location.path('/user/' + $scope.lift);
-    }
+    var path = $scope.lift.toLowerCase();
+    var first = path[0].toUpperCase();
+    $location.path('/' +  first + path.substr(1));
   };
   
 

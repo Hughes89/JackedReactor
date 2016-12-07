@@ -9,7 +9,6 @@ module.exports = {
       if (err) {
         console.log(err);
       } else if (liftObj) {
-        //console.log('Found: ' + liftObj);
         res.json(liftObj);
       }
     });
@@ -22,7 +21,6 @@ module.exports = {
       if (err) {
         console.log(err);
       } else if (liftObj) {
-        console.log('Found: ' + liftObj);
         res.json(liftObj);
       }
     });
@@ -32,7 +30,12 @@ module.exports = {
     var userId = req.user._id;
     var data = req.body;
     var date = moment().format('MM/DD/YYYY');
-    var OneRepMax = Math.round(data.weight * (1 + (data.reps/30)));
+    var OneRepMax = data.weight;
+    if (data.reps > 1) {
+      OneRepMax = Math.round(data.weight * (1 + (data.reps/30)));
+    }
+    var first = data.lift[0].toUpperCase();
+    data.lift = first + data.lift.substr(1);
     var lift = new Lift({ 
       lift: data.lift,
       date: date,
@@ -58,6 +61,24 @@ module.exports = {
         console.log(err);
       }
       res.sendStatus(200);
+    });
+  },
+
+  removeLiftData: function (req, res, next) {
+    var liftId = req.params.liftId;
+    var userId = req.user._id;
+    console.log(liftId);
+    Lift.findById(liftId)
+      .exec((err, lift) => {
+        console.log(lift);
+        if (lift.user === userId) {
+          Lift.findByIdAndRemove(liftId, (err, lift) => {
+            if (err) res.sendStatus(404);
+            res.sendStatus(200);
+          });
+        } else {
+          res.sendStatus(401);
+        }
     });
   }
 

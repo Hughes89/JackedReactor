@@ -1,24 +1,23 @@
 angular.module('track.nav', [])
 
-.controller('navController', function ($scope, $stateParams, $location, $http, userData) {
+.controller('navController', function ($scope, $stateParams, $location, $http, userData, Auth) {
   $scope.data = {};
-  $scope.user = window.user;
-  $scope.gotLifts = false;
-
   $scope.goto = function (path) {
-    $location.path('/user/' + path);
+    $location.path('/' + path);
   };
 
-
-  $scope.makeUnique = function (array) {
-    array.forEach(function (ele) {
-      if (userData.storage.liftList.indexOf(ele.lift) === -1) {
-        userData.storage.liftList.push(ele.lift);
-      }
-    });
-    $scope.data.liftList = userData.storage.liftList;
-    $scope.gotLifts = true;
+  $scope.isAuth = Auth.isAuth;
+  $scope.logout = function () {
+    $scope.data.liftList = [];
+    Auth.logout();
   };
-  $scope.getLifts = userData.getData;
-  $scope.getLifts($scope.makeUnique);
+})
+
+.directive('navBar', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/navigation/nav.html'
+  };
 });

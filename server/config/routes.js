@@ -13,6 +13,8 @@ module.exports = function (app, express) {
 
   app.delete('/api/delete/:lift', helpers.isAuth, liftController.deleteLifts);
 
+  app.delete('/api/remove/:liftId', helpers.isAuth, liftController.removeLiftData);
+
   app.post('/api/signup', userController.signup);
 
   app.post('/api/signin', userController.signin);

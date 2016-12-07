@@ -14,25 +14,33 @@ angular.module('track.services', [])
   };
 
   var getData = function (callback) {
-    // window.user = prompt('Username: ');
     return $http({
       method: 'GET',
       url: '/api/user',
     })
     .then(function (res) {
-      return res.data;
+      return makeUnique(res.data);
     });
   };
 
   var getLiftData = function (liftName, callback) {
     return $http({
       method: 'GET',
-      url: '/' + window.user + '/' + liftName,
+      url: '/api/' + liftName,
     })
     .then(function (data) {
       callback(data.data);
     });
   };
+
+  function makeUnique (array) {
+    return array.reduce((acc, ele) => {
+      if (acc.indexOf(ele.lift) === -1) {
+        acc.push(ele.lift);
+      }
+      return acc;
+    }, []);
+  }
 
   return {
     getData: getData,
@@ -42,17 +50,15 @@ angular.module('track.services', [])
   };
 })
 
-.factory('Auth', function ($http, $location, $window) {
-  var isAuth = false;
-
+.factory('Auth', function ($http, $location, $window, userData) {
   var signup = function (user) {
     return $http({
       method: 'POST',
-      url: '/signup',
+      url: '/api/signup',
       data: user
     }).success(function (data) {
-      window.user = data;
-      $location.path('/user/add');
+      localStorage.setItem('token', data.token);
+      $location.path('/');
     });
   };
 
@@ -62,20 +68,25 @@ angular.module('track.services', [])
       url: '/api/signin',
       data: user
     }).success(function (data) {
-      window.user = data;
-      console.log(data);
       localStorage.setItem('token', data.token);
-      $location.path('/user/add');
+      $location.path('/');
     });
   };
 
   var isAuth = function () {
-    return !!localStorage.getItem('user');
-  }
+    return !!localStorage.getItem('token');
+  };
+
+  var logout = function () {
+    localStorage.removeItem('token');
+    $location.path('/signin');
+  };
 
   return {
     signup: signup,
-    signin: signin
+    signin: signin,
+    isAuth: isAuth,
+    logout: logout
   };
 
 });
