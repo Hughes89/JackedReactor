@@ -1,10 +1,8 @@
-<div id="page-wrapper" ng-controller="addController">
+<div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h3 class="page-header">
-					Sign In
-				</h3>
+				<h3 class="page-header">Sign In</h3>
 				<hr>
 			</div>
 		</div>
@@ -13,13 +11,14 @@
 				<form ng-submit='signin()'>
 					<input type="text" class="mdl-textfield__input" ng-model="user.username" placeholder="Username" required/>
 					<input type="password" class="mdl-textfield__input" ng-model="user.password" placeholder="Password..." required/>
-					<center><button class="mdl-button mdl-js-button mdl-button--primary">
-																Sign in
-														</button><br>
+					<div class="center-button">
 						<span class="error"><strong>{{ errorMsg }}</strong></span><br>
+						<button class="mdl-button mdl-js-button mdl-button--primary">
+							Sign in
+						</button><br>
 				</form>
 				Don't have an account? <a href='/signup'><strong>Signup</strong>...</a>
-				<center>
+				</div>
 			</div>
 		</div>
 	</div>

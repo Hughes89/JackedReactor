@@ -1,20 +1,31 @@
-angular.module('track.signup', [])
+(function() {
+  'use strict';
+  
+  angular
+    .module('track.signup', [])
+    .controller('signupController', signupController);
+    
+  signupController.$inject = ['$scope', 'Auth'];  
+  function signupController ($scope, Auth) {
+    $scope.user = {};
+    $scope.err = '';
+    $scope.error = false;
+    $scope.signup = signup;
 
-.controller('signupController', function ($scope, $stateParams, $http, $location, Auth) {
-  $scope.user = {};
-  $scope.err = false;
-  $scope.error = false;
-
-  $scope.signup = function () {
-    if ($scope.user.password.length >= 8) {
-      Auth.signup($scope.user)
-        .error(function (err) {
-          if (err) {
-            $scope.error = true;
-          }
-        });
-    } else {
-      $scope.err = true;
+    function signup () {
+      if ($scope.user.password.length >= 8) {
+        Auth.signup($scope.user)
+          .error(function (err) {
+            if (err) {
+              $scope.error = 'Username unavailable.';
+              $scope.err = true;
+            }
+          });
+      } else {
+        $scope.error = 'Password must be 8 characters long.';
+        $scope.err = true;
+      }
     }
-  };
-});
+  }
+
+})();

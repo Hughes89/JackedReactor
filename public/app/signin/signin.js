@@ -1,23 +1,27 @@
-angular.module('track.signin', [])
+(function() {
+  'use strict';
 
-.controller('signinController', function ($scope, $stateParams, $http, $location, Auth) {
-  $scope.user = {};
-  $scope.errorMsg = '';
+  angular
+    .module('track.signin', [])
+    .controller('signinController', signinController);
+  
+  signinController.$inject = ['$scope', 'Auth'];
+    
+  function signinController ($scope, Auth) {
+    $scope.user = {};
+    $scope.errorMsg = '';
+    $scope.signin = signin;
 
-  $scope.checkError = function (error){
-    console.log(error);
-    // if (error.data.includes('No user')) {
-    //   $scope.errorMsg = 'Incorrect Password.';
-    // } else if (error.data.includes('User does not exist')) {
-    //   $scope.errorMsg = 'Username does not exist.';
-    // }
-  };
+    function checkError (error){
+      return error === 'password' ? $scope.errorMsg = 'Incorrect Password.' : $scope.errorMsg = 'Username does not exist.';
+    }
 
-  $scope.signin = function () {
-    Auth.signin($scope.user)
-      .catch(function (error) {
-        $scope.checkError(error);
-      });
-  };
+    function signin () {
+      Auth.signin($scope.user)
+        .success(function (data) {
+          checkError(data);
+        });
+    }
+  }
 
-});
+})();
