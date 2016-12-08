@@ -9,7 +9,7 @@ module.exports = {
     User.findOne({ username: username })
       .then(function (user) {
         if (!user) {
-          res.sendStatus(404);
+          res.send('user');
         } else {
           return user.comparePasswords(password)
             .then(function (foundUser) {
@@ -19,7 +19,7 @@ module.exports = {
                 var token = jwt.encode(user, config.secret);
                 res.json({token: token});
               } else {
-                res.sendStats(401);
+                res.send('password');
               }
             });
         }
