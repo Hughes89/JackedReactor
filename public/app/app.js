@@ -1,15 +1,25 @@
-angular.module('track', [
-  'track.nav',
-  'track.add',
-  'track.lift',
-  'track.signin',
-  'track.signup',
-  'track.menu',
-  'track.services',
-  'ui.router'
-])
+(function() {
+  'use strict';
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  angular
+    .module('track', [
+    'track.nav',
+    'track.add',
+    'track.lift',
+    'track.signin',
+    'track.signup',
+    'track.menu',
+    'track.services',
+    'ui.router'])
+    .config(config)
+    .factory('AttachTokens', AttachTokens)
+    .run(authRoutes);
+  
+  config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
+  authRoutes.$inject = ['$rootScope', '$state', 'Auth'];
+  AttachTokens.$inject = ['$window'];
+
+  function config ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/signin');
     $stateProvider
     .state('add', {
@@ -37,12 +47,12 @@ angular.module('track', [
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true); //Remove the '#' from URL.
     $httpProvider.interceptors.push('AttachTokens');
-  })
+  }
 
-  .factory('AttachTokens', function ($window) {
+  function AttachTokens ($window) {
     var attach = {
       request: function (object) {
-        var jwt = $window.localStorage.getItem('token');
+        var jwt = $window.localStorage.getItem('JRT');
         if (jwt) {
           object.headers['x-access-token'] = jwt;
         }
@@ -51,9 +61,9 @@ angular.module('track', [
       }
     };
     return attach;
-  })
+  }
 
-  .run(function ($rootScope, $state, Auth) {
+  function authRoutes ($rootScope, $state, Auth) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       if (toState.name === 'lift' || toState.name === 'add') {
         if (!Auth.isAuth()) {
@@ -62,23 +72,6 @@ angular.module('track', [
         }
       }
     });
-  });
+  }
 
-  // .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
-  //   var originatorEv;
-  //   this.openMenu = function($mdOpenMenu, ev) {
-  //     originatorEv = ev;
-  //     $mdOpenMenu(ev);
-  //   };
-  //   this.announceClick = function(index) {
-  //     $mdDialog.show(
-  //       $mdDialog.alert()
-  //         .title('You clicked!')
-  //         .textContent('You clicked the menu item at index ' + index)
-  //         .ok('Nice')
-  //         .targetEvent(originatorEv)
-  //     );
-  //     originatorEv = null;
-  //   }
-
-  // });
+})();
