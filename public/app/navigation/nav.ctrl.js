@@ -2,7 +2,7 @@
   'use strict';
   
   angular
-    .module('track.nav', [])
+    .module('track.nav')
     .controller('navController', navController);
 
   navController.$inject =['$scope', '$location', 'Auth'];
