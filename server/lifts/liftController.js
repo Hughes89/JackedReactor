@@ -8,6 +8,7 @@ module.exports = {
     Lift.find({user: userId}, function (err, liftObj) {
       if (err) {
         console.log(err);
+        res.sendStatus(404);
       } else if (liftObj) {
         res.json(liftObj);
       }
@@ -20,6 +21,7 @@ module.exports = {
     Lift.find({ user : userId, lift: lift }, function (err, liftObj) {
       if (err) {
         console.log(err);
+        res.sendStatus(404);
       } else if (liftObj) {
         res.json(liftObj);
       }
@@ -44,6 +46,7 @@ module.exports = {
     lift.save(function (err, liftObj) {
       if (err) {
         console.log(err);
+        res.sendStatus(404);
       } else {
         console.log('Save successful');
         res.sendStatus(201);
@@ -65,10 +68,8 @@ module.exports = {
   removeLiftData: function (req, res, next) {
     var liftId = req.params.liftId;
     var userId = req.user._id;
-    console.log(liftId);
     Lift.findById(liftId)
       .exec((err, lift) => {
-        console.log(lift);
         if (lift.user === userId) {
           Lift.findByIdAndRemove(liftId, (err, lift) => {
             if (err) res.sendStatus(404);
