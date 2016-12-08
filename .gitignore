@@ -1,8 +1,5 @@
 # Dependency directory
 node_modules/
 
-# API keys and secrets
-server/config.js
-
 #Runtime data
 *.lock
