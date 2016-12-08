@@ -201,3 +201,14 @@ a {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout-title {
+    display: none;
+  }
+
+  .mdl-layout__header {
+    display: inherit;
+    min-height: 64px;
+  }
+}
