@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var config = require('./config.js');
 var app = express();
 
-var port = 8080;
+var port = process.env.PORT || 8080;
 
 //Middleware
 app.use(express.static('./public'));
@@ -28,6 +28,6 @@ mongoose.connect(config.database);
 //Routes
 require('./config/routes.js')(app, express);
 
-app.listen(8080, function () {
+app.listen(port, function () {
   console.log('Listening on port: ' + port);
 });
