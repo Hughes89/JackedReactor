@@ -1,25 +1,23 @@
-<div id="page-wrapper" ng-controller="addController">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header">
-                    Add a lift <small>Create or add to existing...</small>
-                </h3>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-            <form ng-submit='add.sendLift()'>
-            <input type="text" class="mdl-textfield__input" ng-model="add.lift" placeholder="Lift name..." required/>
-            <input type="number" class="mdl-textfield__input" ng-model="add.weight" placeholder="Weight..." required/>
-            <input type="number" class="mdl-textfield__input" ng-model="add.reps" placeholder="Reps..." required/>
-            <div class="center-button">
-                <button class="mdl-button mdl-js-button mdl-button--primary center-button">
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header">Add a lift <small>Create or add to existing...</small></h3>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <form ng-submit='sendLift()'>
+          <input type="text" class="mdl-textfield__input" ng-model="lift" placeholder="Lift name..." required/>
+          <input type="number" class="mdl-textfield__input" ng-model="weight" placeholder="Weight..." required/>
+          <input type="number" class="mdl-textfield__input" ng-model="reps" placeholder="Reps..." required/>
+          <div class="center-button">
+            <button class="mdl-button mdl-js-button mdl-button--primary">
                 Add
                 </button>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>

@@ -1,22 +1,22 @@
-<div id="page-wrapper" ng-controller="liftController">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header">
-                    {{data.title[0].lift}}
-                </h3>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-              <div id="test" ng-if="data.lift">
-                <linechart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel"></linechart>
-              </div>
-            </div>
-            <center><button ng-click="deleteLiftCollection()" class="mdl-button mdl-js-button mdl-button--primary">
-                Delete Lift Data
-            </button><center>
-        </div>
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header">{{lift}}</h3>
+        <hr>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="test" ng-if="data.lift">
+          <linechart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel"></linechart>
+        </div>
+      </div>
+      <div class="center-button">
+        <button ng-click="deleteLift(lift)" class="mdl-button mdl-js-button mdl-button--primary">
+          Delete Lift Data
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
