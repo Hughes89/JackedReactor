@@ -20,9 +20,13 @@
         method: 'POST',
         url: '/api/signup',
         data: user
-      }).success(function (data) {
-        localStorage.setItem('JRT', data.token);
-        $location.path('/');
+      }).then(function (res) {
+        if (res.data === 'user') {
+          return res.data;
+        } else {
+          localStorage.setItem('JRT', res.data.token);
+          $location.path('/');
+        }
       });
     }
 
@@ -31,7 +35,8 @@
         method: 'POST',
         url: '/api/signin',
         data: user
-      }).success(function (data) {
+      }).then(function (res) {
+        var data = res.data;
         if (data === 'user' || data === 'password') {
           return data;
         } else {

@@ -15,8 +15,8 @@
     function signup () {
       if ($scope.user.password.length >= 8) {
         Auth.signup($scope.user)
-          .error(function (err) {
-            if (err) {
+          .then(function (data) {
+            if (data === 'user') {
               $scope.error = 'Username unavailable.';
               $scope.err = true;
             }

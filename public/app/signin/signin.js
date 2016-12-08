@@ -18,7 +18,7 @@
 
     function signin () {
       Auth.signin($scope.user)
-        .success(function (data) {
+        .then(function (data) {
           checkError(data);
         });
     }

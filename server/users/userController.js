@@ -32,7 +32,7 @@ module.exports = {
     User.findOne({ username: username })
       .then(function (user) {
         if (user) {
-          res.sendStatus(400);
+          res.send('user');
         } else {
           User.create({
             username: username,

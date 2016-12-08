@@ -42,7 +42,7 @@
         url: '/api/submitLift',
         data: storage
       })
-      .success(function (data) {
+      .then(function (data) {
         $location.path('/' +  storage.lift);
       });
     }
@@ -53,7 +53,7 @@
         $http({
           method: 'DELETE',
           url: '/api/delete/' + lift,
-        }).success(function () {
+        }).then(function () {
           $location.path('/');
         });
       }
