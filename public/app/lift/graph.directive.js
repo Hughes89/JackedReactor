@@ -17,7 +17,9 @@
           xkey: $scope[attrs.xkey],
           ykeys: $scope[attrs.ykeys],
           labels: $scope[attrs.labels],
+          lineColors: ['#627C8D'],
           parseTime: false,
+          gridTextFamily: 'Roboto',
           resize: true
         });
       }

@@ -1,7 +1,23 @@
+body {
+  background-color: #F4F3F4;
+}
+
+a {
+  color: #627C8D;
+}
+
+.mdl-layout__header {
+  background-color: #627C8D !important;
+}
+
+.mdl-layout__title, .mdl-layout-title {
+  color: #F4F3F4;
+}
+
 .demo-ribbon {
   width: 100%;
   height: 40vh;
-  background-color: #2196F3;
+  background-color: #C8CBC1;
   flex-shrink: 0;
 }
 
@@ -46,7 +62,7 @@
 
 .mdl-layout__header-row .mdl-navigation__link {
     font-size: 20px;
-    color: rgba(0,0,0,.87);
+    color: #F4F3F4;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
@@ -62,7 +78,7 @@
 .morris-hover.morris-default-style{
   border-radius: 10px;
   padding: 6px;
-  color: #666;
+  color: #424242;
   background: rgba(255,255,255,0.8);
   border: solid 2px rgba(230,230,230,0.8);
   font-family: sans-serif;
@@ -77,7 +93,12 @@
 
 .morris-hover.morris-default-style .morris-hover-point{
   white-space: nowrap;
-  margin: 0.1em 0
+  margin: 0.1em 0;
+  color: #627C8D !important;
+}
+
+.morris-hover-row-label {
+  color: #424242;
 }
 
 .md-button.md-icon-button {
@@ -105,24 +126,8 @@
     right: 800px; 
 }
 
-.mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
-    color: rgb(255,255,255);
-    background-color: rgb(255,110,64);
-}
-p {
-  color:rgb(255,110,64);
-  text-decoration: none;
-}
-
-a {
-  color:rgb(255,110,64);
-  text-decoration: none;
-}
-
-.mdl-mini-footer {
-  background-color: rgb(245, 245, 245);
-  color: #FFFFFF;
-  padding: 50px;
+.mdl-button--primary.mdl-button--primary {
+  color: rgb(98, 124, 141);
 }
 
 .loading {
@@ -145,8 +150,8 @@ a {
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: rgb(245, 245, 245);
-    color: #424242;
+    background-color: #627C8D;
+    color: #e1e3e6;
     font-size: 20px;
     padding: 20px;
     font-family: "Roboto","Helvetica","Arial",'sans-serif';
@@ -172,7 +177,7 @@ a {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #F4F3F4;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1000;
@@ -180,17 +185,20 @@ a {
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: black;
+    color: #424242;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: rgba(158,158,158,.2)
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
 
 
 /* Loading spinner */
@@ -198,7 +206,7 @@ a {
     margin: auto;
     text-align: center;
     border: 16px solid #f5f5f5; /* Light grey */
-    border-top: 16px solid #2196F3; /* Blue */
+    border-top: 16px solid #627C8D; /* Blue */
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -210,6 +218,9 @@ a {
     100% { transform: rotate(360deg); }
 }
 
+
+
+/* Mobile Devices */
 @media screen and (max-width: 1024px) {
   .mdl-layout-title {
     display: none;
