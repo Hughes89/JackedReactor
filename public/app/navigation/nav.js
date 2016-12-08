@@ -1,23 +1,29 @@
-angular.module('track.nav', [])
+(function() {
+  'use strict';
+  
+  angular
+    .module('track.nav', [])
+    .controller('navController', navController)
+    .directive('navBar', navBar);
 
-.controller('navController', function ($scope, $stateParams, $location, $http, userData, Auth) {
-  $scope.data = {};
-  $scope.goto = function (path) {
-    $location.path('/' + path);
-  };
+  navController.$inject =['$scope', '$location', 'Auth']
 
-  $scope.isAuth = Auth.isAuth;
-  $scope.logout = function () {
-    $scope.data.liftList = [];
-    Auth.logout();
-  };
-})
+  function navController ($scope, $location, Auth) {
+    $scope.isAuth = Auth.isAuth;
+    $scope.logout = Auth.logout;
+    $scope.goto = function (path) {
+      $location.path('/' + path);
+    };
+  }
 
-.directive('navBar', function() {
-  return {
-    restrict: 'AE',
-    replace: true,
-    scope: true,
-    templateUrl: 'app/navigation/nav.html'
-  };
-});
+  function navBar () {
+    return {
+      restrict: 'AE',
+      replace: true,
+      scope: true,
+      controller: 'navController',
+      templateUrl: 'app/navigation/nav.html'
+    };
+  }
+
+})();
