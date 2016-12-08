@@ -2,9 +2,8 @@
   'use strict';
 
   angular
-    .module('track.menu', [])
-    .controller('dropDownMenu', dropDownMenu)
-    .directive('liftDropdown', liftDropdown);
+    .module('track.menu')
+    .controller('dropDownMenu', dropDownMenu);
     
   dropDownMenu.$inject = ['$scope', '$location', 'userData'];
 
@@ -37,14 +36,4 @@
       } 
     }
   }
-
-  function liftDropdown () {
-    return {
-      restrict: 'AE',
-      replace: true,
-      scope: true,
-      templateUrl: 'app/liftMenu/dropdown.html'
-    };
-  }
-
 })();
