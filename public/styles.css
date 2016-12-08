@@ -26,10 +26,6 @@
     margin-bottom: 80px;
 }
 
-/*.demo-layout.is-small-screen .demo-content {
-  padding: 40px 28px;
-}*/
-
 .demo-layout.is-small-screen .demo-content {
     padding: 0px 28px;
 }
@@ -48,6 +44,10 @@
     font-size: 20px;
     color: rgba(0,0,0,.87);
     font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+
+.mdl-layout__header-row .mdl-navigation__link:hover {
+  background-color: rgba(158,158,158,.2);
 }
 
 .morris-hover{
@@ -140,8 +140,8 @@ a {
 .dropbtn {
     background-color: rgb(245, 245, 245);
     color: #424242;
-    padding: 16px;
     font-size: 20px;
+    padding: 20px;
     font-family: "Roboto","Helvetica","Arial",'sans-serif';
     border: none;
     cursor: pointer;
@@ -150,6 +150,7 @@ a {
  /*Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
     outline: 0;
+    background-color: rgba(158,158,158,.2);
 }
 
 /* The container <div> - needed to position the dropdown content */
