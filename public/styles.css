@@ -152,6 +152,7 @@ a {
     font-family: "Roboto","Helvetica","Arial",'sans-serif';
     border: none;
     cursor: pointer;
+    height: 64px;
 }
 
  /*Dropdown button on hover & focus */
@@ -216,10 +217,14 @@ a {
 
   .mdl-layout__header {
     display: inherit;
-    min-height: 64px;
+    height: 64px;
   }
 
   .mobile {
     display: inherit;
+  }
+
+  .mdl-layout__header-row .mdl-navigation__link {
+    line-height: 70px;
   }
 }
