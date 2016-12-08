@@ -3,6 +3,3 @@ node_modules/
 
 #Runtime data
 *.lock
-
-# Secrets
-server/config.js
