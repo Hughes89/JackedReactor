@@ -50,9 +50,9 @@
   }
 
   function AttachTokens ($window) {
-    var attach = {
+    const attach = {
       request: function (object) {
-        var jwt = $window.localStorage.getItem('JRT');
+        const jwt = $window.localStorage.getItem('JRT');
         if (jwt) {
           object.headers['x-access-token'] = jwt;
         }

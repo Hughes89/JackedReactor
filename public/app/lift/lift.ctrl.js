@@ -18,14 +18,14 @@
     $scope.activeCSS = activeCSS;
 
     userData.getLiftData($scope.lift)
-      .then(function (data) {
+      .then(data => {
         $scope.xkey = 'date';
         $scope.ykeys = ['OneRepMax'];
         $scope.labels = ['One Rep Max'];
         $scope.myModel = data;
         $scope.data.liftData = data;
         $scope.data.lift = true;
-    });
+      });
 
 
     function remove (id, name) {

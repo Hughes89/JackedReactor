@@ -21,9 +21,7 @@
         method: 'GET',
         url: '/api/user',
       })
-      .then(function (res) {
-        return makeUnique(res.data);
-      });
+      .then(res => makeUnique(res.data));
     }
 
     function getLiftData (liftName) {
@@ -31,9 +29,7 @@
         method: 'GET',
         url: '/api/' + liftName,
       })
-      .then(function (res) {
-        return res.data;
-      });
+      .then(res => res.data);
     }
 
     function submitLift (storage) {
@@ -43,22 +39,18 @@
         url: '/api/submitLift',
         data: storage
       })
-      .then(function (data) {
-        $location.path('/' +  storage.lift);
-      });
+      .then(data => $location.path('/' +  storage.lift));
     }
 
     function deleteLift (lift, type='delete') {
-      var choice;
+      let choice = false;
       type === 'delete' ? choice = confirm('Are you sure?') : choice = true;
       if (choice) {
         $http({
           method: 'DELETE',
           url: '/api/delete/' + lift
         })
-        .then(function () {
-          $location.path('/');
-        });
+        .then(() => $location.path('/'));
       }
     }
 
@@ -69,10 +61,12 @@
           method: 'DELETE',
           url: '/api/remove/' + id
         })
-        .then ((res) => res);
+        .then (res => res);
       }
     }
 
+    /* Helper Functions */
+    
     function makeUnique (array) {
       return array.reduce((acc, ele) => {
         if (acc.indexOf(ele.lift) === -1) {
@@ -81,11 +75,11 @@
         return acc;
       }, []);
     }
-  }
 
-  function capitalizeFirst (string) {
-    var lowerCase = string.toLowerCase();
-    var upperFirst = lowerCase[0].toUpperCase();
-    return upperFirst +lowerCase.substr(1);
+    function capitalizeFirst (string) {
+      var lowerCase = string.toLowerCase();
+      var upperFirst = lowerCase[0].toUpperCase();
+      return upperFirst +lowerCase.substr(1);
+    }
   }
 })();

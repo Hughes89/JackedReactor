@@ -5,7 +5,8 @@
     .module('track.signup', [])
     .controller('signupController', signupController);
     
-  signupController.$inject = ['$scope', 'Auth'];  
+  signupController.$inject = ['$scope', 'Auth'];
+
   function signupController ($scope, Auth) {
     $scope.user = {};
     $scope.err = '';
@@ -15,7 +16,7 @@
     function signup () {
       if ($scope.user.password.length >= 8) {
         Auth.signup($scope.user)
-          .then(function (data) {
+          .then(data => {
             if (data === 'user') {
               $scope.error = 'Username unavailable.';
               $scope.err = true;

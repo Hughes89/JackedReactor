@@ -14,7 +14,7 @@
     $scope.sendLift = sendLift;
     
     function sendLift () {
-      var storage = {
+      const storage = {
         lift: $scope.lift.toLowerCase(),
         weight: $scope.weight,
         reps: $scope.reps

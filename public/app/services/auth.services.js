@@ -20,7 +20,7 @@
         method: 'POST',
         url: '/api/signup',
         data: user
-      }).then(function (res) {
+      }).then(res => {
         if (res.data === 'user') {
           return res.data;
         } else {
@@ -35,7 +35,7 @@
         method: 'POST',
         url: '/api/signin',
         data: user
-      }).then(function (res) {
+      }).then(res => {
         var data = res.data;
         if (data === 'user' || data === 'password') {
           return data;

@@ -11,9 +11,11 @@
     $scope.data = {};
     $scope.getLifts = getLiftsFunction;
     window.onclick = clicker;
-    $scope.goto = function (path) {
+    $scope.goto = goto;
+    
+    function goto (path) {
       $location.path('/' + path);
-    };
+    }
     
     function getLiftsFunction () {
       userData.getData()
@@ -25,10 +27,9 @@
 
     function clicker (event) {
       if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
           if (openDropdown.classList.contains('show')) {
             openDropdown.classList.remove('show');
           }

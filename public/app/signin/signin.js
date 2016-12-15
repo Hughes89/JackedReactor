@@ -12,15 +12,13 @@
     $scope.errorMsg = '';
     $scope.signin = signin;
 
-    function checkError (error){
-      return error === 'password' ? $scope.errorMsg = 'Incorrect Password.' : $scope.errorMsg = 'Username does not exist.';
-    }
-
     function signin () {
       Auth.signin($scope.user)
-        .then(function (data) {
-          checkError(data);
-        });
+        .then(data => checkError(data));
+    }
+
+    function checkError (error){
+      return error === 'password' ? $scope.errorMsg = 'Incorrect Password.' : $scope.errorMsg = 'Username does not exist.';
     }
   }
 
