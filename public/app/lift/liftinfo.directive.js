@@ -11,7 +11,7 @@
       replace: true,
       scope: true,
       controller: 'liftController',
-      templateUrl: 'app/lift/liftInfo.html'
+      templateUrl: 'app/lift/liftinfo.html'
     };
   }
 })();
