@@ -14,7 +14,7 @@
     .config(config)
     .factory('AttachTokens', AttachTokens)
     .run(authRoutes);
-  
+
   config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
   authRoutes.$inject = ['$rootScope', '$state', 'Auth'];
   AttachTokens.$inject = ['$window'];

@@ -58,7 +58,7 @@ a {
   border-radius: 0;
   width: 150px;
   line-height: normal;
-} 
+}
 
 .mdl-layout__header-row .mdl-navigation__link {
     font-size: 20px;
@@ -123,7 +123,7 @@ a {
 #fixedbutton {
     position: fixed;
     bottom: 100px;
-    right: 800px; 
+    right: 800px;
 }
 
 .mdl-button--primary.mdl-button--primary {
@@ -133,6 +133,24 @@ a {
 .loading {
   height: 50%;
   width: 50%
+}
+
+.lift-info-container {
+  text-align: center;
+}
+
+.lift-info {
+  display: inline-block;
+  padding: 10px;
+}
+
+.vertical {
+  size: 200px;
+  width: 1px;
+}
+
+.title-link {
+  cursor: pointer;
 }
 
 .center-button {

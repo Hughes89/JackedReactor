@@ -1,0 +1,10 @@
+<div class="lift-info-container">
+  <div ng-repeat="lift in myModel" class="lift-info">
+    <div>
+      <strong>Weight</strong>: {{lift.weight}}<br>
+      <strong>Reps</strong>: {{lift.reps}}<br>
+      <strong>Date</strong>: {{lift.date}}<br>
+      <button class="mdl-button mdl-js-button mdl-button--primary" ng-click="remove(lift._id, lift.lift)">Remove</button>
+    </div>
+  </div>
+</div>

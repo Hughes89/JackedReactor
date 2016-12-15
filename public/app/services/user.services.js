@@ -12,7 +12,8 @@
       getData: getData,
       getLiftData: getLiftData,
       submitLift: submitLift,
-      deleteLift: deleteLift
+      deleteLift: deleteLift,
+      removeLiftData: removeLiftData
     };
 
     function getData (callback) {
@@ -47,15 +48,28 @@
       });
     }
 
-    function deleteLift (lift) {
-      var choice = confirm('Are you sure?');
+    function deleteLift (lift, type='delete') {
+      var choice;
+      type === 'delete' ? choice = confirm('Are you sure?') : choice = true;
       if (choice) {
         $http({
           method: 'DELETE',
-          url: '/api/delete/' + lift,
-        }).then(function () {
+          url: '/api/delete/' + lift
+        })
+        .then(function () {
           $location.path('/');
         });
+      }
+    }
+
+    function removeLiftData (id) {
+      var choice = confirm('Are you sure?');
+      if (choice) {
+        return $http({
+          method: 'DELETE',
+          url: '/api/remove/' + id
+        })
+        .then ((res) => res);
       }
     }
 

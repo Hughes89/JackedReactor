@@ -3,18 +3,22 @@
     <div class="row">
       <div class="col-lg-12">
         <h3 class="page-header">{{lift}}</h3>
+        <h5><span class="title-link" ng-style="activeCSS('ORM')" ng-click="swap('info')">One Rep Max</span> | <span class="title-link" ng-style="activeCSS('info')" ng-click="swap('ORM')">Reps & Weight</span></h5>
         <hr>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <div id="test" ng-if="data.lift">
+        <div id="test" ng-if="data.lift && choice ==='ORM'">
           <linechart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel"></linechart>
+        </div>
+        <div ng-if="choice === 'info'">
+          <lift-info></lift-info>
         </div>
       </div>
       <div class="center-button">
         <button ng-click="deleteLift(lift)" class="mdl-button mdl-js-button mdl-button--primary">
-          Delete Lift Data
+          Delete All Lift Data
         </button>
       </div>
     </div>

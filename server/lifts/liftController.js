@@ -36,7 +36,7 @@ module.exports = {
     if (data.reps > 1) {
       OneRepMax = Math.round(data.weight * (1 + (data.reps/30)));
     }
-    var lift = new Lift({ 
+    var lift = new Lift({
       lift: data.lift,
       date: date,
       weight: data.weight,
