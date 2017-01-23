@@ -5,7 +5,7 @@ node_modules/
 *.lock
 
 #Production
-public/dist
+public/dist/
 
 #Secrets
 .env
