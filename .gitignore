@@ -4,5 +4,8 @@ node_modules/
 #Runtime data
 *.lock
 
+#Production
+public/dist
+
 #Secrets
-server/config.js
+.env
