@@ -1,8 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var config = require('./config.js');
 var app = express();
+require('dotenv').config();
 
 var port = process.env.PORT || 8080;
 
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 });
 
 //Database
-mongoose.connect(config.database);
+mongoose.connect(process.env.database);
 
 //Routes
 require('./config/routes.js')(app, express);

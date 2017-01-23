@@ -11,14 +11,10 @@
     }
     </style>
 
-    <!-- inject-vendor:css -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.deep_orange-light_blue.min.css" />
-    <!-- endinject -->
-
-    <!-- inject:css -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- endinject -->
+    <link rel="stylesheet" href="public/dist/styles.css">
+    
 
   <body>
     <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
@@ -35,41 +31,11 @@
     </div>
   </body>
 
-  <!-- inject-vendor:js -->
   <script src="/node_modules/angular/angular.min.js"></script>
   <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/node_modules/raphael/raphael.min.js"></script>
   <script src="/node_modules/morris.js/morris.min.js"></script>
-  <!-- endinject -->
-
-  <!-- inject:js -->
-  <!-- Bootstrapping -->
-  <script src="/app/app.js"></script>
-
-  <!-- Modules -->
-  <script src="/app/dropdown/dropdown.module.js"></script>
-  <script src="/app/navigation/nav.module.js"></script>
-  <script src="/app/lift/lift.module.js"></script>
-
-  <!-- Services -->
-  <script src="/app/services/services.module.js"></script>
-  <script src="/app/services/auth.services.js"></script>
-  <script src="/app/services/user.services.js"></script>
-
-  <!-- Directives -->
-  <script src="/app/dropdown/dropdown.directive.js"></script>
-  <script src="/app/navigation/nav.directive.js"></script>
-  <script src="/app/lift/graph.directive.js"></script>
-  <script src="/app/lift/liftinfo.directive.js"></script>
-
-  <!-- Controllers -->
-  <script src="/app/navigation/nav.ctrl.js"></script>
-  <script src="/app/dropdown/dropdown.ctrl.js"></script>
-  <script src="/app/lift/lift.ctrl.js"></script>
-  <script src="/app/add/add.js"></script>
-  <script src="/app/signin/signin.js"></script>
-  <script src="/app/signup/signup.js"></script>
-  <!-- endinject -->
-
+  <script src="/public/dist/app.js"></script>
+  
 </html>

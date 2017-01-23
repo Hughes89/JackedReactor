@@ -1,6 +1,5 @@
 var User = require('../users/userModel.js');
 var jwt = require('jwt-simple');
-var config = require('../config.js');
 
 module.exports = {
   signin: function (req, res, next) {
@@ -16,7 +15,7 @@ module.exports = {
               if (foundUser) {
                 user.password = '';
                 user.salt = '';
-                var token = jwt.encode(user, config.secret);
+                var token = jwt.encode(user, process.env.secret);
                 res.json({token: token});
               } else {
                 res.send('password');
@@ -41,7 +40,7 @@ module.exports = {
           .then(function (user) {
               user.password = '';
               user.salt = '';
-              var token = jwt.encode(user, config.secret);
+              var token = jwt.encode(user, process.env.secret);
               res.json({token: token});
           });
         }
